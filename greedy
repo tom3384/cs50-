@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void)
+{
+    float change_owed; 
+    do
+        {
+            printf("Hey yooo spaghettiooo! How much change is owed?\n");
+            change_owed = get_float();
+        }
+    while (change_owed < 0);
+    
+int change_owed_in_cents = round (change_owed * 100);
+
+int min_coins = 0; 
+
+while (change_owed_in_cents >= 25)
+{
+    min_coins = min_coins + 1;
+    change_owed_in_cents = change_owed_in_cents - 25;
+}
+while (change_owed_in_cents >= 10)
+{
+    min_coins = min_coins + 1;
+    change_owed_in_cents = change_owed_in_cents - 10;
+}
+while (change_owed_in_cents >= 5)
+{
+    min_coins = min_coins + 1;
+    change_owed_in_cents = change_owed_in_cents - 5;
+}
+
+while (change_owed_in_cents >= 1)
+{
+    min_coins = min_coins +1;
+    change_owed_in_cents = change_owed_in_cents - 1;
+}
+    
+printf("%i\n", min_coins);
+}
